@@ -5,58 +5,9 @@
     <title>Pokédex Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <style>
-        body {
-            background-color: #fff8dc;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        .login-box {
-            width: 90%;
-            max-width: 400px;
-            margin: 5% auto;
-            padding: 40px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 25px 5px rgba(255, 183, 0, 0.3);
-        }
-        .login-box h2 {
-            text-align: center;
-            color: #e74c3c;
-        }
-        .w3-input {
-            background-color: #f5f5f5;
-            color: #333;
-            border: none;
-        }
-        .w3-input:focus {
-            background-color: #eaeaea;
-        }
-        .w3-button.pokedex-btn {
-            background-color: #e74c3c;
-            color: white;
-            margin-top: 20px;
-        }
-        .w3-button.pokedex-btn:hover {
-            background-color: #c0392b;
-        }
-        .pokedex-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .pokedex-header img {
-            width: 80px;
-        }
-        @media (max-width: 600px) {
-            .login-box {
-                margin: 10% auto;
-                padding: 30px 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./FrontEnd/estilos.css">
 </head>
+
 <body>
 
 <div class="login-box w3-card-4">
@@ -74,7 +25,22 @@
 
         <button class="w3-button w3-block w3-round pokedex-btn">Ingresar</button>
     </form>
+
+    <?php
+    session_start();
+    if (isset($_SESSION['incorrecto']) && !empty($_SESSION['incorrecto'])) {
+        echo '<div class="w3-panel w3-red w3-round w3-padding">';
+        echo " HOLA ";
+        $nombre = $_SESSION['incorrecto'];
+        echo htmlspecialchars($nombre);
+
+        echo '</div>';
+    }
+    ?>
+
+
 </div>
 
+?>
 </body>
 </html>

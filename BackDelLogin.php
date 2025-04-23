@@ -39,7 +39,7 @@ if ($resultado->num_rows > 0) {
     header("Location: index.php");
     exit();
 } else {
-    echo "Usuario o contraseña incorrectos.";
+echo "usuario o contraseña incorrectos";
 }
 
 $conexion->close();
