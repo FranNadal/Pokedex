@@ -13,7 +13,7 @@
     <div class="w3-card-4 w3-white w3-display-middle" style="width:300px; padding: 32px;">
         <h2 class="w3-text-teal">Iniciar Sesión</h2>
 
-        <form class="w3-container" action="/" method="post">
+        <form class="w3-container" action="/Pokedex/BackDelLogin.php" method="post">
             <label class="w3-text-grey"><b>Usuario</b></label>
             <input class="w3-input w3-border w3-margin-bottom" type="text" name="usuario" required>
 
