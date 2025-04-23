@@ -9,3 +9,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
 -- Usuario de prueba (admin)
 INSERT INTO usuarios (nombre_usuario, contraseña, es_admin)
 VALUES ('admin', 'admin123', TRUE);
+
+
+INSERT INTO usuarios (nombre_usuario, contraseña, es_admin)
+VALUES ('admindos', 'admin123', TRUE);
