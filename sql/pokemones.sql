@@ -1,0 +1,74 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 22-04-2025 a las 23:42:51
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `pokedex`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pokemones`
+--
+
+CREATE TABLE `pokemones` (
+  `id` int(11) NOT NULL,
+  `numero` int(11) DEFAULT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `tipo` varchar(50) DEFAULT NULL,
+  `descripcion` text DEFAULT NULL,
+  `imagen` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Volcado de datos para la tabla `pokemones`
+--
+
+INSERT INTO `pokemones` (`id`, `numero`, `nombre`, `tipo`, `descripcion`, `imagen`) VALUES
+(1, 1, 'Bulbasaur', 'planta', 'Un Pokémon de tipo planta/veneno. Tiene una semilla en su espalda.', 'img/001.png'),
+(2, 2, 'Ivysaur', 'planta', 'La semilla en su espalda crece conforme él también lo hace.', 'img/002.png'),
+(3, 3, 'Venusaur', 'planta', 'Cuando está completamente abierto, el gran brote de su espalda emite un aroma dulce.', 'img/003.png'),
+(4, 4, 'Charmander', 'fuego', 'Prefiere cosas calientes. Dicen que cuando llueve sale vapor de la punta de su cola.', 'img/004.png'),
+(5, 5, 'Charmeleon', 'fuego', 'Tiene un temperamento agresivo. Siempre está buscando rivales.', 'img/005.png');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `pokemones`
+--
+ALTER TABLE `pokemones`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `numero` (`numero`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `pokemones`
+--
+ALTER TABLE `pokemones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
