@@ -17,10 +17,18 @@ if ($conexion->connect_error) {
 
 // Consulta SQL para obtener los Pokémon y sus tipos (si se ha enviado una búsqueda por nombre)
 $search = isset($_GET['search']) ? $_GET['search'] : '';
-$sql = "SELECT p.numero, p.nombre, t.imagen AS tipo_imagen, p.descripcion, p.imagen
+$sql = "SELECT 
+            p.numero, 
+            p.nombre, 
+            p.descripcion, 
+            p.imagen, 
+            t1.imagen AS tipo_imagen1, 
+            t2.imagen AS tipo_imagen2 
         FROM pokemones p
-        JOIN tipos t ON p.tipo_id = t.id
-        WHERE p.nombre LIKE '%$search%'"; //Si no pongo nada, no busca como si no hubiera criterio de busqueda
+        LEFT JOIN tipos t1 ON p.tipo_id = t1.id
+        LEFT JOIN tipos t2 ON p.tipo_id2 = t2.id
+        WHERE p.nombre LIKE '%$search%'";
+
 
 // Ejecutar la consulta
 $resultado = $conexion->query($sql);
@@ -97,7 +105,7 @@ $resultado = $conexion->query($sql);
             <input class="w3-input w3-round w3-border"
                    type="text"
                    name="search"
-                   placeholder="Buscar por Pokémon o ID"
+                   placeholder="Buscar por Pokémon"
                    value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
             <button class="w3-btn w3-red w3-round" type="submit">Buscar</button>
         </div>
@@ -123,17 +131,23 @@ $resultado = $conexion->query($sql);
         if ($resultado && $resultado->num_rows > 0) {
             while ($fila = $resultado->fetch_assoc()) {
                 echo "<tr>
-                <td>{$fila['numero']}</td>
-                <td>{$fila['nombre']}</td>
-                <td><img src='{$fila['tipo_imagen']}' alt='tipo' width='50'></td>
-                <td>{$fila['descripcion']}</td>
-                <td><img src='{$fila['imagen']}' alt='{$fila['nombre']}' width='60'></td>
-              </tr>";
+            <td>{$fila['numero']}</td>
+            <td>{$fila['nombre']}</td>
+            <td style='text-align: center;'>
+                <img src='{$fila['tipo_imagen1']}' alt='Tipo 1' width='70'>";
+                if (!empty($fila['tipo_imagen2'])) {
+                    echo "<img src='{$fila['tipo_imagen2']}' alt='Tipo 2' width='70'>";
+                }
+                echo "</td>
+            <td>{$fila['descripcion']}</td>
+            <td><img src='{$fila['imagen']}' alt='{$fila['nombre']}' width='60'></td>
+        </tr>";
             }
             echo "</table>";
         } else {
             echo "No se encontraron Pokémon.";
         }
+
 
         ?>
         </tbody>
