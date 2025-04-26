@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-04-2025 a las 23:42:51
+-- Tiempo de generación: 26-04-2025 a las 03:12:30
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -31,7 +31,7 @@ CREATE TABLE `pokemones` (
   `id` int(11) NOT NULL,
   `numero` int(11) DEFAULT NULL,
   `nombre` varchar(100) DEFAULT NULL,
-  `tipo` varchar(50) DEFAULT NULL,
+  `tipo_id` int(11) DEFAULT NULL,
   `descripcion` text DEFAULT NULL,
   `imagen` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -40,12 +40,12 @@ CREATE TABLE `pokemones` (
 -- Volcado de datos para la tabla `pokemones`
 --
 
-INSERT INTO `pokemones` (`id`, `numero`, `nombre`, `tipo`, `descripcion`, `imagen`) VALUES
-(1, 1, 'Bulbasaur', 'planta', 'Un Pokémon de tipo planta/veneno. Tiene una semilla en su espalda.', 'img/001.png'),
-(2, 2, 'Ivysaur', 'planta', 'La semilla en su espalda crece conforme él también lo hace.', 'img/002.png'),
-(3, 3, 'Venusaur', 'planta', 'Cuando está completamente abierto, el gran brote de su espalda emite un aroma dulce.', 'img/003.png'),
-(4, 4, 'Charmander', 'fuego', 'Prefiere cosas calientes. Dicen que cuando llueve sale vapor de la punta de su cola.', 'img/004.png'),
-(5, 5, 'Charmeleon', 'fuego', 'Tiene un temperamento agresivo. Siempre está buscando rivales.', 'img/005.png');
+INSERT INTO `pokemones` (`id`, `numero`, `nombre`, `tipo_id`, `descripcion`, `imagen`) VALUES
+(1, 1, 'Bulbasaur', 1, 'Un Pokémon de tipo planta/veneno. Tiene una semilla en su espalda.', 'recursos/img/001.png'),
+(2, 2, 'Ivysaur', 1, 'La semilla en su espalda crece conforme él también lo hace.', 'recursos/img/002.png'),
+(3, 3, 'Venusaur', 1, 'Cuando está completamente abierto, el gran brote de su espalda emite un aroma dulce.', 'recursos/img/003.png'),
+(4, 4, 'Charmander', 2, 'Prefiere cosas calientes. Dicen que cuando llueve sale vapor de la punta de su cola.', 'recursos/img/004.png'),
+(5, 5, 'Charmeleon', 2, 'Tiene un temperamento agresivo. Siempre está buscando rivales.', 'recursos/img/005.png');
 
 --
 -- Índices para tablas volcadas
