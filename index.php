@@ -92,7 +92,8 @@ $resultado = $conexion->query($sql);
             echo "Hola, $nombre";
         } else {
             // Si no está logueado o el nombre está vacío, mostrar el mensaje para iniciar sesión
-            echo "Iniciar sesión";
+            // Mostrar un link para iniciar sesión si no está logueado
+            echo '<a id="link-login" href="login.php">Iniciar sesión</a>';
         }
         ?>
     </div>
