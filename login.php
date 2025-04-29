@@ -26,17 +26,7 @@
         <button class="w3-button w3-block w3-round pokedex-btn">Ingresar</button>
     </form>
 
-    <?php
-    session_start();
-    if (isset($_SESSION['incorrecto']) && !empty($_SESSION['incorrecto'])) {
-        echo '<div class="w3-panel w3-red w3-round w3-padding">';
-        echo " HOLA ";
-        $nombre = $_SESSION['incorrecto'];
-        echo htmlspecialchars($nombre);
 
-        echo '</div>';
-    }
-    ?>
 
 
 </div>
