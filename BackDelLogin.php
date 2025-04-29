@@ -1,17 +1,10 @@
 <?php
-// Leer el archivo config.ini
-$config = parse_ini_file('config.ini', true); // El segundo parámetro 'true' hace que se devuelvan las secciones
-//datos de la base de datos guardados en mi config.ioni
-$db_host = $config['database']['host'];
-$db_user = $config['database']['user'];
-$db_password = $config['database']['password'];
-$db_name = $config['database']['database'];
+require_once ($_SERVER['DOCUMENT_ROOT'].'/Pokedex/includes/includeGeneral.php');
+$bd= new Database();
 
 //Conectarse a la BD
-$conexion = new mysqli($db_host, $db_user, $db_password, $db_name);
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
-}
+$conexion = $bd->getConexion();
+
 
 // Capturar los datos del formulario
 $usuario = $_POST['usuario'];
@@ -42,7 +35,7 @@ if ($resultado->num_rows > 0) {
 echo "usuario o contraseña incorrectos";
 }
 
-$conexion->close();
+$conexion-> close();
 
 
 

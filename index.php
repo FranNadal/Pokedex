@@ -1,19 +1,15 @@
 <?php
+require_once ($_SERVER['DOCUMENT_ROOT'].'/Pokedex/includes/includeGeneral.php');
 // Iniciar la sesión para mostrar el nombre de usuario si está logueado
 session_start();
 
-// Leer el archivo config.ini
-$config = parse_ini_file('config.ini', true); // El segundo parámetro 'true' hace que se devuelvan las secciones
-$db_host = $config['database']['host'];
-$db_user = $config['database']['user'];
-$db_password = $config['database']['password'];
-$db_name = $config['database']['database'];
+$db= new database();
+
+
 
 // Conectarse a la base de datos
-$conexion = new mysqli($db_host, $db_user, $db_password, $db_name);
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
-}
+$conexion = $db->getConexion();
+
 
 // Consulta SQL para obtener los Pokémon y sus tipos (si se ha enviado una búsqueda por nombre)
 $search = isset($_GET['search']) ? $_GET['search'] : '';
