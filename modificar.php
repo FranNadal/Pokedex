@@ -51,8 +51,15 @@ if (!empty($pokemon['tipo_id2'])) {
 
 //si se mando el formulario
 if($_SERVER["REQUEST_METHOD"] === "POST"){
+    $tipo1 = null;
 
-$nombre = $_POST["nombre"];
+    if (isset($_POST['tipo1'])) {
+        $tipo1 = (int) $_POST['tipo1'];
+    }
+
+
+
+    $nombre = $_POST["nombre"];
 $descripcion = $_POST["descripcion"];
 $tipo2 = "NULL";
     if (isset($_POST['tipo2']) && $_POST['tipo2'] !== "") {
@@ -76,7 +83,7 @@ $tipo2 = "NULL";
 
     $sqlUpdate="UPDATE pokemones 
             SET nombre = '$nombre', 
-                tipo_id = $idTipo, 
+                tipo_id = $tipo1, 
                 tipo_id2 = $tipo2, 
                 descripcion = '$descripcion', 
                 imagen = '$ruta_imagen_db'
@@ -106,7 +113,7 @@ $conexion->close();
 
     <label class="w3-text-teal"><b>Tipo 1</b></label>
     <select class="w3-select w3-border" name="tipo1" required>
-        <option value="<?= $pokemon['tipo_id'] ?>" disabled selected> <?= $nombreTipo ?> </option>
+        <option value="<?= $pokemon['tipo_id'] ?>"  selected> <?= $nombreTipo ?> </option>
         <option value="1">Planta</option>
         <option value="2">Fuego</option>
         <option value="3">Agua</option>
