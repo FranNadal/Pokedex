@@ -1,8 +1,8 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . "/Pokedex/requiereds/requiere.php");
+require_once ($_SERVER['DOCUMENT_ROOT'].'/Pokedex/includes/includeGeneral.php');
+$bd= new Database();
 
 //Conectarse a la BD
-$bd= new Database();
 $conexion = $bd->getConexion();
 
 
@@ -35,7 +35,7 @@ if ($resultado->num_rows > 0) {
 echo "usuario o contraseña incorrectos";
 }
 
-$conexion->close();
+$conexion-> close();
 
 
 

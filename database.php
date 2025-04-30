@@ -1,37 +1,39 @@
 <?php
 
+class database
+{
 
-class database{
-    //creo la variable conexion
-    private  $conexion = null;
+    private $conexion = null;
 
-    public function __construct(){
-        $config = parse_ini_file('config.ini', true);
+    public function __construct()
+    {
 
-        $host = $config['database']['host'];
-        $user = $config['database']['user'];
-        $password = $config['database']['password'];
-        $database = $config['database']['database'];
+        $config = parse_ini_file('config.ini', true); // El segundo parámetro 'true' hace que se devuelvan las secciones
+        $db_host = $config['database']['host'];
+        $db_user = $config['database']['user'];
+        $db_password = $config['database']['password'];
+        $db_name = $config['database']['database'];
 
-        $this->conexion = new mysqli($host, $user, $password, $database);
+
+        $this->conexion = new mysqli($db_host, $db_user, $db_password, $db_name);
 
         if ($this->conexion->connect_error) {
             die("Error de conexión: " . $this->conexion->connect_error);
         }
-
     }
 
-    /**
-     * @return mysqli
-     */
     public function getConexion()
     {
         return $this->conexion;
     }
 
-    public function close() {
+    public function closeConexion()
+    {
         if ($this->conexion !== null) {
             $this->conexion->close();
         }
     }
+
 }
+
+?>

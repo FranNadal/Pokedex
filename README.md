@@ -25,7 +25,7 @@ Gestión de Pokémon: Los usuarios (administradores) pueden agregar, editar o el
 
 Sesiones: Se gestionan sesiones para asegurar que solo los usuarios autenticados (como administradores) puedan modificar la base de datos.
 
-Consultas SQL 
+Consultas SQL
 
 Interfaz amigable: La página web es responsive, adaptándose a diferentes tamaños de pantalla y dispositivos.
 
