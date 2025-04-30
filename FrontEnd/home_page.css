@@ -34,3 +34,34 @@
     border-radius: 10px;
     box-shadow: 0 0 20px 4px rgba(255, 183, 0, 0.2);
 }
+
+     /* Estilo para el contenedor de la barra de búsqueda y el botón */
+ .search-box {
+     display: flex;
+     align-items: center; /* Centra el contenido verticalmente */
+ }
+
+/* Estilo para que el campo de texto ocupe todo el espacio disponible */
+.search-box input {
+    flex: 1;
+    margin-right: 10px; /* Añadir un margen entre el campo de búsqueda y el botón */
+}
+
+/* Estilo opcional para el botón */
+.search-box button {
+    flex-shrink: 0; /* Evita que el botón se reduzca */
+}
+
+.search-box button:hover {
+    box-shadow: none; /* Elimina la sombra al pasar el mouse */
+}
+
+/* Lineas fila y columnas */
+table.w3-table-all td, table.w3-table-all th {
+    border-right: 2px solid #ddd;
+}
+
+table.w3-table-all td:last-child, table.w3-table-all th:last-child {
+    border-right: none;
+}
+
