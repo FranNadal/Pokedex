@@ -120,6 +120,18 @@ $resultado = $conexion->query($sql);
             <th>Tipo</th>
             <th>Descripción</th>
             <th>Imagen</th>
+            <?php
+            //si esta la sesion inicada se va agregar un boton a la columna con la funcion de agregar
+            if (isset($_SESSION['nombre']) && !empty($_SESSION['nombre'])) {
+
+                //
+                echo "<th>
+          <a href='#' onclick=\"document.getElementById('modalAgregar').style.display='block'\">
+            <button>Agregar</button>
+          </a>
+        </th>";
+            }
+            ?>
         </tr>
         </thead>
         <tbody>
@@ -137,17 +149,96 @@ $resultado = $conexion->query($sql);
                 }
                 echo "</td>
             <td>{$fila['descripcion']}</td>
-            <td><img src='{$fila['imagen']}' alt='{$fila['nombre']}' width='60'></td>
-        </tr>";
+            <td><img src='{$fila['imagen']}' alt='{$fila['nombre']}' width='60'></td>";
+
+                // Agregar botones si está logueado
+                if (isset($_SESSION['nombre']) && !empty($_SESSION['nombre'])) {
+                    echo "
+           
+            <td><a href='modificar.php?id={$fila['numero']}'><button>Modificar</button></a></td>
+            <td><a href='eliminar.php?id={$fila['numero']}' onclick=\"return confirm('¿Estás seguro de eliminar este Pokémon?');\"><button>Eliminar</button></a></td>";
+                }
+
+                echo "</tr>";
             }
             echo "</table>";
         } else {
             echo "No se encontraron Pokémon.";
         }
-
-
         ?>
         </tbody>
+
+        <!-- MODAL PARA AGREGAR POKÉMON -->
+        <div id="modalAgregar" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-4" style="max-width:600px">
+                <header class="w3-container w3-teal">
+      <span onclick="document.getElementById('modalAgregar').style.display='none'"
+            class="w3-button w3-display-topright">&times;</span>
+                    <h2>Agregar Pokémon</h2>
+                </header>
+                <div class="w3-container">
+                    <form action="agregar.php" method="POST" enctype="multipart/form-data" class="w3-container w3-padding">
+                        <label class="w3-text-teal"><b>Número</b></label>
+                        <input class="w3-input w3-border" type="number" name="numero" required>
+
+                        <label class="w3-text-teal"><b>Nombre</b></label>
+                        <input class="w3-input w3-border" type="text" name="nombre" required>
+
+                        <label class="w3-text-teal"><b>Tipo 1</b></label>
+                        <select class="w3-select w3-border" name="tipo1" required>
+                            <option value="" disabled selected>Elige un tipo</option>
+                            <option value="1">Planta</option>
+                            <option value="2">Fuego</option>
+                            <option value="3">Agua</option>
+                            <option value="4">Eléctrico</option>
+                            <option value="5">Psíquico</option>
+                            <option value="6">Hielo</option>
+                            <option value="7">Roca</option>
+                            <option value="8">Bicho</option>
+                            <option value="9">Fantasma</option>
+                            <option value="10">Dragón</option>
+                            <option value="11">Volador</option>
+                            <option value="12">Normal</option>
+                            <option value="13">Lucha</option>
+                            <option value="14">Veneno</option>
+                            <option value="15">Tierra</option>
+                        </select>
+
+                        <label class="w3-text-teal"><b>Tipo 2 (opcional)</b></label>
+                        <select class="w3-select w3-border" name="tipo2">
+                            <option value="">Ninguno</option>
+                            <option value="1">Planta</option>
+                            <option value="2">Fuego</option>
+                            <option value="3">Agua</option>
+                            <option value="4">Eléctrico</option>
+                            <option value="5">Psíquico</option>
+                            <option value="6">Hielo</option>
+                            <option value="7">Roca</option>
+                            <option value="8">Bicho</option>
+                            <option value="9">Fantasma</option>
+                            <option value="10">Dragón</option>
+                            <option value="11">Volador</option>
+                            <option value="12">Normal</option>
+                            <option value="13">Lucha</option>
+                            <option value="14">Veneno</option>
+                            <option value="15">Tierra</option>
+                        </select>
+
+
+                        <label class="w3-text-teal"><b>Descripción</b></label>
+                        <textarea class="w3-input w3-border" name="descripcion" required></textarea>
+
+                        <label class="w3-text-teal"><b>Imagen</b></label>
+                        <input class="w3-input w3-border" type="file" name="imagen" accept="image/*" required>
+
+                        <br>
+                        <button class="w3-button w3-teal" type="submit">Guardar</button>
+                        <button class="w3-button w3-grey" type="button" onclick="document.getElementById('modalAgregar').style.display='none'">Cancelar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 </div>
 
 </body>
