@@ -1,31 +1,30 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'].'/Pokedex/includes/includeGeneral.php');
-
-$bd= new database();
-
-$conexion=$bd->getConexion();
+//Incluye el arhcivo "includeGeneral" que el mismo incluye el archivo php "database" donde se conecta a la bd
+require_once ($_SERVER['DOCUMENT_ROOT'].'/Pokedex/includes/includeGeneral.php');
+$bd = new database();
+$conexion= $bd->getConexion();
 
 //traigo por url el id del pokemon donde se apreto modificar
-$pokemonAModificar = $_GET['id'];
+$id_pokemon_a_modificar = $_GET['id'];
 
 //traer al pokemon con el id que se apreto en el index
-$sql_pokemon= "SELECT * FROM pokemones WHERE numero = $pokemonAModificar";
+$sql_pokemon= "SELECT * FROM pokemones WHERE numero = $id_pokemon_a_modificar";
 //almaceno el resultado de la query en una variable
-$resultadoPokemon=$conexion->query($sql_pokemon);
+$resultado_pokemon=$conexion->query($sql_pokemon);
 
 //lo vuelvo un array asociativo es decir key ---> value
-$pokemon = $resultadoPokemon->fetch_assoc();
+$pokemon = $resultado_pokemon->fetch_assoc();
 
+
+//LE ASIGNO EL NOMBRE(EJ: PLANTA) AL TIPO(EJ: #1) DE POKEMON
 //accedo al tipoid de mi pokemon traido por get
 $idTipo = $pokemon['tipo_id'];
-
 
 //dame el nombre de la tabla tipo donde el id sea el idtipo del pokemon hago esta consulta para que en vez de aparecer 3 figure agua
 $sql_tipo = "SELECT nombre FROM tipos WHERE id = $idTipo";
 
 //almaceno la query en una variable
 $resultadoTipo = $conexion->query($sql_tipo);
-
 
 //inicializo esta variable globalmente para dps usarla abajo
 $nombreTipo = "";
@@ -36,18 +35,13 @@ $nombreTipo = "";
     $nombreTipo = $fila['nombre'];
 
 
-
-
-
-
+ //LE ASIGNO EL NOMBRE (EJ: PLANTA) AL 2DO TIPO DE POKEMON. ES OPCIONAL, PUEDE TENER 2 TIPOS O NO.
 $nombreTipo2 = ""; // inicialización
 //si el tipo2 tiene algun contenido procedo  a ejecutar la consulta
 if (!empty($pokemon['tipo_id2'])) {
     $idTipo2 = $pokemon['tipo_id2'];
-
     $sql = "SELECT nombre FROM tipos WHERE id = $idTipo2";
     $resultado2 = $conexion->query($sql);
-
 
         $fila = $resultado2->fetch_assoc();
         $nombreTipo2 = $fila['nombre'];
@@ -86,7 +80,7 @@ $tipo2 = "NULL";
                 tipo_id2 = $tipo2, 
                 descripcion = '$descripcion', 
                 imagen = '$ruta_imagen_db'
-            WHERE numero = $pokemonAModificar";
+            WHERE numero = $id_pokemon_a_modificar";
 
     if($conexion->query($sqlUpdate)){
         echo "<script>alert('Pokémon modificado exitosamente'); window.location.href='index.php';</script>";
