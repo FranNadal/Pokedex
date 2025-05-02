@@ -1,10 +1,9 @@
 <?php
-require_once ($_SERVER['DOCUMENT_ROOT'].'/Pokedex/includes/includeGeneral.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Pokedex/includes/includeGeneral.php');
 // Iniciar la sesión para mostrar el nombre de usuario si está logueado
 session_start();
 
-$db= new database();
-
+$db = new database();
 
 
 // Conectarse a la base de datos
@@ -48,11 +47,16 @@ $resultado = $conexion->query($sql);
     <img src="./FrontEnd/img/logo_pokemon.png" alt="Pokeball">
     <div class="username">
         <?php
-        // Mostrar el nombre del usuario logueado
+        // Mostrar el nombre del usuario si esta logueado
         if (isset($_SESSION['nombre']) && !empty($_SESSION['nombre'])) {
-            // Mostrar el nombre del usuario si está logueado
             $nombre = $_SESSION['nombre'];
-            echo "Hola, $nombre";
+
+            echo '<div class="w3-dropdown-hover">';
+            echo '<button class="username w3-border-none"> Hola,' . $nombre . '</button>';
+            echo '<div class="w3-dropdown-content w3-bar-block w3-card-4">';
+            echo '<a href="#" class="w3-bar-item w3-button">Link 1</a>';
+            echo "</div>";
+            echo "</div>";
         } else {
             // Si no está logueado o el nombre está vacío, mostrar el mensaje para iniciar sesión
             // Mostrar un link para iniciar sesión si no está logueado
@@ -144,7 +148,8 @@ $resultado = $conexion->query($sql);
                     <h2>Agregar Pokémon</h2>
                 </header>
                 <div class="w3-container">
-                    <form action="agregar.php" method="POST" enctype="multipart/form-data" class="w3-container w3-padding">
+                    <form action="agregar.php" method="POST" enctype="multipart/form-data"
+                          class="w3-container w3-padding">
                         <label class="w3-text-teal"><b>Número</b></label>
                         <input class="w3-input w3-border" type="number" name="numero" required>
 
@@ -200,7 +205,9 @@ $resultado = $conexion->query($sql);
 
                         <br>
                         <button class="w3-button w3-teal" type="submit">Guardar</button>
-                        <button class="w3-button w3-grey" type="button" onclick="document.getElementById('modalAgregar').style.display='none'">Cancelar</button>
+                        <button class="w3-button w3-grey" type="button"
+                                onclick="document.getElementById('modalAgregar').style.display='none'">Cancelar
+                        </button>
                     </form>
                 </div>
             </div>
