@@ -41,7 +41,16 @@ $resultado = $conexion->query($sql);
 
 </head>
 <body>
-
+<?php
+//EL MENSAJE QUE LLEGA POR GET SI SE ELIMINO
+if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
+    echo '<div class="w3-panel w3-green w3-display-container">
+            <span onclick="this.parentElement.style.display=\'none\'"
+                  class="w3-button w3-large w3-display-topright">&times;</span>
+            Pokémon eliminado correctamente.
+          </div>';
+}
+?>
 <!-- NAVBAR -->
 <div class="navbar">
     <img src="./FrontEnd/img/logo_pokemon.png" alt="Pokeball">
@@ -51,12 +60,14 @@ $resultado = $conexion->query($sql);
         if (isset($_SESSION['nombre']) && !empty($_SESSION['nombre'])) {
             $nombre = $_SESSION['nombre'];
 
-            echo '<div class="w3-dropdown-hover">';
-            echo '<button class="username w3-border-none"> Hola,' . $nombre . '</button>';
-            echo '<div class="w3-dropdown-content w3-bar-block w3-card-4">';
-            echo '<a href="cerrarSesion.php" class="w3-bar-item w3-button">Cerrar Sesion</a>';
-            echo "</div>";
-            echo "</div>";
+            echo '<div class="w3-dropdown-hover w3-right">';
+            echo '  <button class="w3-button w3-light-grey w3-round-large w3-hover-blue w3-margin-right">';
+            echo '    👤 Hola, <strong>' . $nombre . '</strong>';
+            echo '  </button>';
+            echo '  <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">';
+            echo '    <a href="cerrarSesion.php" class="w3-bar-item w3-button w3-hover-red">🔒 Cerrar Sesión</a>';
+            echo '  </div>';
+            echo '</div>';
         } else {
             // Si no está logueado o el nombre está vacío, mostrar el mensaje para iniciar sesión
             // Mostrar un link para iniciar sesión si no está logueado
@@ -222,3 +233,4 @@ $resultado = $conexion->query($sql);
 // Cerrar la conexión con la base de datos
 $conexion->close();
 ?>
+
