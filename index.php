@@ -54,7 +54,7 @@ $resultado = $conexion->query($sql);
             echo '<div class="w3-dropdown-hover">';
             echo '<button class="username w3-border-none"> Hola,' . $nombre . '</button>';
             echo '<div class="w3-dropdown-content w3-bar-block w3-card-4">';
-            echo '<a href="#" class="w3-bar-item w3-button">Link 1</a>';
+            echo '<a href="cerrarSesion.php" class="w3-bar-item w3-button">Cerrar Sesion</a>';
             echo "</div>";
             echo "</div>";
         } else {
