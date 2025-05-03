@@ -53,25 +53,29 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
 ?>
 <!-- NAVBAR -->
 <div class="navbar">
-    <img src="./FrontEnd/img/logo_pokemon.png" alt="Pokeball">
+    <a href="index.php">
+        <img src="./FrontEnd/img/logo_pokemon.png" alt="Pokeball">
+    </a>
     <div class="username">
         <?php
         // Mostrar el nombre del usuario si esta logueado
         if (isset($_SESSION['nombre']) && !empty($_SESSION['nombre'])) {
             $nombre = $_SESSION['nombre'];
 
-            echo '<div class="w3-dropdown-hover w3-right">';
-            echo '  <button class="w3-button w3-light-grey w3-round-large w3-hover-blue w3-margin-right">';
+            echo '<div class="dropdown-hover right">';
+            echo '  <button class="button custom-button">';
             echo '    👤 Hola, <strong>' . $nombre . '</strong>';
             echo '  </button>';
-            echo '  <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">';
-            echo '    <a href="cerrarSesion.php" class="w3-bar-item w3-button w3-hover-red">🔒 Cerrar Sesión</a>';
+            echo '  <div class="dropdown-content bar-block card-4 animate-opacity">';
+            echo '    <a href="cerrarSesion.php" class="bar-item custom-link button hover-red">🔒 Cerrar Sesión</a>';
             echo '  </div>';
             echo '</div>';
+
         } else {
             // Si no está logueado o el nombre está vacío, mostrar el mensaje para iniciar sesión
             // Mostrar un link para iniciar sesión si no está logueado
-            echo '<a id="link-login" href="login.php">Iniciar sesión</a>';
+            echo '<a id="link-login" class="custom-link no-hover" href="login.php">Iniciar sesión</a>
+';
         }
         ?>
     </div>
@@ -123,7 +127,10 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
             while ($fila = $resultado->fetch_assoc()) {
                 echo "<tr>
             <td>{$fila['numero']}</td>
-            <td>{$fila['nombre']}</td>
+            
+            <td><a href='infoPokemon.php?numero={$fila['numero']}'>{$fila['nombre']}</a></td>
+            
+            
             <td style='text-align: center;'>
                 <img src='{$fila['tipo_imagen1']}' alt='Tipo 1' width='70'>";
                 if (!empty($fila['tipo_imagen2'])) {
@@ -153,21 +160,21 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
         <!-- MODAL PARA AGREGAR POKÉMON -->
         <div id="modalAgregar" class="w3-modal">
             <div class="w3-modal-content w3-animate-top w3-card-4" style="max-width:600px">
-                <header class="w3-container w3-teal">
-      <span onclick="document.getElementById('modalAgregar').style.display='none'"
-            class="w3-button w3-display-topright">&times;</span>
+                <header class="w3-container color-rojo">
+            <span onclick="document.getElementById('modalAgregar').style.display='none'"
+                  class="w3-button w3-display-topright">&times;</span>
                     <h2>Agregar Pokémon</h2>
                 </header>
                 <div class="w3-container">
                     <form action="agregar.php" method="POST" enctype="multipart/form-data"
                           class="w3-container w3-padding">
-                        <label class="w3-text-teal"><b>Número</b></label>
+                        <label><b>Número</b></label>
                         <input class="w3-input w3-border" type="number" name="numero" required>
 
-                        <label class="w3-text-teal"><b>Nombre</b></label>
+                        <label><b>Nombre</b></label>
                         <input class="w3-input w3-border" type="text" name="nombre" required>
 
-                        <label class="w3-text-teal"><b>Tipo 1</b></label>
+                        <label><b>Tipo 1</b></label>
                         <select class="w3-select w3-border" name="tipo1" required>
                             <option value="" disabled selected>Elige un tipo</option>
                             <option value="1">Planta</option>
@@ -187,7 +194,7 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
                             <option value="15">Tierra</option>
                         </select>
 
-                        <label class="w3-text-teal"><b>Tipo 2 (opcional)</b></label>
+                        <label><b>Tipo 2 (opcional)</b></label>
                         <select class="w3-select w3-border" name="tipo2">
                             <option value="">Ninguno</option>
                             <option value="1">Planta</option>
@@ -207,22 +214,21 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
                             <option value="15">Tierra</option>
                         </select>
 
-
-                        <label class="w3-text-teal"><b>Descripción</b></label>
+                        <label><b>Descripción</b></label>
                         <textarea class="w3-input w3-border" name="descripcion" required></textarea>
 
-                        <label class="w3-text-teal"><b>Imagen</b></label>
+                        <label><b>Imagen</b></label>
                         <input class="w3-input w3-border" type="file" name="imagen" accept="image/*" required>
 
                         <br>
-                        <button class="w3-button w3-teal" type="submit">Guardar</button>
+                        <button class="w3-button color-rojo" type="submit">Guardar</button>
                         <button class="w3-button w3-grey" type="button"
-                                onclick="document.getElementById('modalAgregar').style.display='none'">Cancelar
-                        </button>
+                                onclick="document.getElementById('modalAgregar').style.display='none'">Cancelar</button>
                     </form>
                 </div>
             </div>
         </div>
+
 
 </div>
 

@@ -103,17 +103,31 @@ $conexion->close();
 <head>
     <title>Modificar Pokémon</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./FrontEnd/estilos.css">
+    <link rel="stylesheet" href="./FrontEnd/home_page.css">
 </head>
-<body class="w3-container">
 
-<h2 class="w3-text-teal">Modificar Pokémon</h2>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <a href="index.php">
+        <img src="./FrontEnd/img/logo_pokemon.png" alt="Pokeball">
+    </a>
+</div>
+
+<h2 class="w3-text-red">Modificar Pokémon</h2>
+
 <form class="w3-container" method="post" enctype="multipart/form-data">
-    <label class="w3-text-teal"><b>Nombre</b></label>
+    <label class="w3-text-red"><b>Nombre</b></label>
     <input class="w3-input w3-border" type="text" name="nombre" value="<?= $pokemon['nombre'] ?>" required>
 
-    <label class="w3-text-teal"><b>Tipo 1</b></label>
+    <label class="w3-text-red"><b>Tipo 1</b></label>
     <select class="w3-select w3-border" name="tipo1" required>
-        <option value="<?= $pokemon['tipo_id'] ?>"  selected> <?= $nombreTipo ?> </option>
+        <option value="<?= $pokemon['tipo_id'] ?>" selected><?= $nombreTipo ?></option>
         <option value="1">Planta</option>
         <option value="2">Fuego</option>
         <option value="3">Agua</option>
@@ -131,9 +145,9 @@ $conexion->close();
         <option value="15">Tierra</option>
     </select>
 
-    <label class="w3-text-teal"><b>Tipo 2 (opcional)</b></label>
+    <label class="w3-text-red"><b>Tipo 2 (opcional)</b></label>
     <select class="w3-select w3-border" name="tipo2">
-        <option value="<?= $pokemon['tipo_id2'] ?>" selected> <?= $nombreTipo2 ?> </option>
+        <option value="<?= $pokemon['tipo_id2'] ?>" selected><?= $nombreTipo2 ?></option>
         <option value="">Ninguno</option>
         <option value="1">Planta</option>
         <option value="2">Fuego</option>
@@ -152,18 +166,17 @@ $conexion->close();
         <option value="15">Tierra</option>
     </select>
 
-    <label class="w3-text-teal"><b>Descripción</b></label>
+    <label class="w3-text-red"><b>Descripción</b></label>
     <textarea class="w3-input w3-border" name="descripcion"><?= $pokemon['descripcion'] ?></textarea>
 
-    <label class="w3-text-teal"><b>Imagen</b></label>
+    <label class="w3-text-red"><b>Imagen</b></label>
     <input class="w3-input w3-border" type="file" name="imagen">
 
-    <p>Imagen actual:</p>
+    <p class="w3-text-red"><b>Imagen actual:</b></p>
     <img src="/Pokedex/<?= $pokemon['imagen'] ?>" alt="Imagen Pokémon" style="width: 150px;">
-    <br>
-    <br>
+    <br><br>
 
-    <button class="w3-button w3-teal" type="submit">Guardar Cambios</button>
+    <button class="w3-button w3-red" type="submit">Guardar Cambios</button>
 </form>
 
 </body>

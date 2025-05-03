@@ -55,3 +55,18 @@ body {
         margin-top: 10px;
     }
 }
+
+td a {
+    text-decoration: none;  /* Elimina la línea debajo del enlace dentro de las celdas */
+}
+
+.color-rojo {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.color-rojo:hover {
+    background-color: #c0392b;
+    color: white;
+}
+
