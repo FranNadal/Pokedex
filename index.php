@@ -36,6 +36,7 @@ $resultado = $conexion->query($sql);
     <title>Pokédex Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
     <link rel="stylesheet" href="./FrontEnd/estilos.css">
     <link rel="stylesheet" href="./FrontEnd/home_page.css">
 
@@ -113,7 +114,7 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
                 //
                 echo "<th>
           <a href='#' onclick=\"document.getElementById('modalAgregar').style.display='block'\">
-            <button>Agregar</button>
+            <button class='w3-btn w3-red w3-round'>Agregar</button>
           </a>
         </th>";
             }
@@ -144,8 +145,8 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
                 if (isset($_SESSION['nombre']) && !empty($_SESSION['nombre'])) {
                     echo "
            
-            <td><a href='modificar.php?id={$fila['numero']}'><button>Modificar</button></a></td>
-            <td><a href='eliminar.php?id={$fila['numero']}' onclick=\"return confirm('¿Estás seguro de eliminar este Pokémon?');\"><button>Eliminar</button></a></td>";
+            <td><a href='modificar.php?id={$fila['numero']}'><button class='w3-btn w3-red w3-round'>Modificar</button></a></td>
+            <td><a href='eliminar.php?id={$fila['numero']}' onclick=\"return confirm('¿Estás seguro de eliminar este Pokémon?');\"><button class='w3-btn w3-win8-crimson w3-round'>Eliminar</button></a></td>";
                 }
 
                 echo "</tr>";
