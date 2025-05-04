@@ -32,75 +32,9 @@ $resultado = $conexion->query($sql);
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="./FrontEnd/estilos.css">
     <link rel="stylesheet" href="./FrontEnd/home_page.css">
+    <link rel="stylesheet" href="./FrontEnd/info_pokemon.css">
+    <link rel="stylesheet" href="./FrontEnd/responsive_table.css">
 
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-        }
-
-        .contenedor-central {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        .info-pokemon {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            padding: 20px;
-            background-color: #fefefe;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .imagen-pokemon img {
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .datos-pokemon {
-            max-width: 600px;
-        }
-
-        .tipos img {
-            margin-right: 10px;
-        }
-
-        @media (max-width: 600px) {
-            .info-pokemon {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .datos-pokemon {
-                max-width: 100%;
-            }
-        }
-
-        .boton-personalizado {
-            display: inline-block;
-            background-color: #e74c3c;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            text-decoration: none;
-            border-radius: 8px;
-            text-align: center;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .boton-personalizado:hover {
-            background-color: #c0392b;
-        }
-
-    </style>
 
 </head>
 <body>
@@ -167,7 +101,7 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
             ?>
 
             <!-- Un voton para regresar al index -->
-            <div class="w3-center">
+            <div>
                 <a href="index.php" class="boton-personalizado">
                     Volver al inicio
                 </a>

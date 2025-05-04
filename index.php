@@ -39,6 +39,9 @@ $resultado = $conexion->query($sql);
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
     <link rel="stylesheet" href="./FrontEnd/estilos.css">
     <link rel="stylesheet" href="./FrontEnd/home_page.css">
+    <link rel="stylesheet" href="./FrontEnd/responsive_table.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
 </head>
 <body>
@@ -65,10 +68,10 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
 
             echo '<div class="dropdown-hover right">';
             echo '  <button class="button custom-button">';
-            echo '    👤 Hola, <strong>' . $nombre . '</strong>';
+            echo '    <i class="fa fa-user" style="color: red;"></i> Hola, <strong>' . $nombre . '</strong>';
             echo '  </button>';
             echo '  <div class="dropdown-content bar-block card-4 animate-opacity">';
-            echo '    <a href="cerrarSesion.php" class="bar-item custom-link button hover-red">🔒 Cerrar Sesión</a>';
+            echo '    <a href="cerrarSesion.php" class="bar-item custom-link button hover-red"><i class="fa-solid fa-right-from-bracket" style="color: red;"></i> Cerrar Sesión</a>';
             echo '  </div>';
             echo '</div>';
 
@@ -99,7 +102,8 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
 <!-- TABLE SPACE -->
 <div class="table-container w3-container w3-card-4">
     <h3>Pokédex</h3>
-    <table class="w3-table-all w3-hoverable">
+    <!--<table class="w3-table-all w3-hoverable">-->
+    <table class="responsive-table">
         <thead>
         <tr class="w3-light-grey">
             <th>#</th>
@@ -127,7 +131,7 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
         if ($resultado && $resultado->num_rows > 0) {
             while ($fila = $resultado->fetch_assoc()) {
                 echo "<tr>
-            <td>{$fila['numero']}</td>
+            <td class='w3-hide-small'>{$fila['numero']}</td>
             
             <td><a href='infoPokemon.php?numero={$fila['numero']}'>{$fila['nombre']}</a></td>
             
@@ -138,7 +142,7 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
                     echo "<img src='{$fila['tipo_imagen2']}' alt='Tipo 2' width='70'>";
                 }
                 echo "</td>
-            <td>{$fila['descripcion']}</td>
+            <td class=''>{$fila['descripcion']}</td>
             <td><img src='{$fila['imagen']}' alt='{$fila['nombre']}' width='60'></td>";
 
                 // Agregar botones si está logueado
