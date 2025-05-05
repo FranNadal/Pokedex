@@ -100,7 +100,7 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
             echo "</div>";
             ?>
 
-            <!-- Un voton para regresar al index -->
+            <!-- Un boton para regresar al index -->
             <div>
                 <a href="index.php" class="boton-personalizado">
                     Volver al inicio

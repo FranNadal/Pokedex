@@ -78,8 +78,8 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
             echo '</div>';
 
         } else {
-            // Si no está logueado o el nombre está vacío, mostrar el mensaje para iniciar sesión
-            // Mostrar un link para iniciar sesión si no está logueado
+            // Si no esta logueado o el nombre esta vacio muestra el mensaje para iniciar sesion
+            // Mostrar link para iniciar sesion si no esta loggueado
             echo '<a id="link-login" class="custom-link no-hover" href="login.php">Iniciar sesión</a>
 ';
         }
@@ -89,7 +89,7 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
 
 <!-- SEARCH BAR -->
 <div class="search-container w3-container">
-    <form method="GET" action="index.php"> <!-- Método GET para enviar datos en la URL -->
+    <form method="GET" action="index.php"> <!-- Metodo GET para enviar datos en al link -->
         <div class="search-box">
             <input class="w3-input w3-round w3-border"
                    type="text"
@@ -101,7 +101,6 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
     </form>
 </div>
 
-<!-- TABLE SPACE -->
 <div class="table-container w3-container w3-card-4">
     <h3>Pokédex</h3>
     <!--<table class="w3-table-all w3-hoverable">-->
@@ -147,7 +146,7 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
             <td class=''>{$fila['descripcion']}</td>
             <td><img src='{$fila['imagen']}' alt='{$fila['nombre']}' width='60'></td>";
 
-                // Agregar botones si está logueado
+                // Agregar botones si esta logueado
                 if (isset($_SESSION['nombre']) && !empty($_SESSION['nombre'])) {
                     echo "
            
@@ -164,7 +163,7 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
         ?>
         </tbody>
 
-        <!-- MODAL PARA AGREGAR POKÉMON -->
+        <!-- modal para cargar pokemon por medio de un formulario -->
         <div id="modalAgregar" class="w3-modal">
             <div class="w3-modal-content w3-animate-top w3-card-4" style="max-width:600px">
                 <header class="w3-container color-rojo">
@@ -243,7 +242,7 @@ if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado') {
 </html>
 
 <?php
-// Cerrar la conexión con la base de datos
+// Cerrar la conexion con la base de datos
 $conexion->close();
 ?>
 

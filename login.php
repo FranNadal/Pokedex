@@ -13,6 +13,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
+            background-attachment: fixed;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
             margin: 0;
