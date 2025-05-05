@@ -22,8 +22,10 @@ $sql = "SELECT
         FROM pokemones p
         LEFT JOIN tipos t1 ON p.tipo_id = t1.id
         LEFT JOIN tipos t2 ON p.tipo_id2 = t2.id
-        WHERE p.nombre LIKE '%$search%'";
-
+        WHERE p.nombre LIKE '%$search%' 
+           OR p.numero LIKE '%$search%' 
+           OR t1.nombre LIKE '%$search%' 
+           OR t2.nombre LIKE '%$search%'";
 
 // Ejecutar la consulta
 $resultado = $conexion->query($sql);
